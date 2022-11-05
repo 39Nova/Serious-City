@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1987762367684967935}
   - component: {fileID: 8131436555269991588}
+  - component: {fileID: 248529411}
   m_Layer: 0
   m_Name: House 2 Prefab
   m_TagString: Untagged
@@ -44,8 +45,20 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5.625378, y: 5.0730934, z: 5.6483884}
-  m_Center: {x: 0.49475408, y: 2.335701, z: 0.483248}
+  m_Size: {x: 5.625378, y: 5.097987, z: 5.6483884}
+  m_Center: {x: 0.49475408, y: 1.9498472, z: 0.483248}
+--- !u!114 &248529411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2709138347313614236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5658d1d29d8be1648bfd5e1d71a2eef9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1951456379660307558
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -63,7 +76,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9aa6e24b9ba19a74a97203231ec74d87, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.37
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9aa6e24b9ba19a74a97203231ec74d87, type: 3}
       propertyPath: m_LocalPosition.z
