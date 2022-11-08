@@ -8,23 +8,12 @@ public class GameManager : MonoBehaviour
 public int gold;
 public Text goldDisplay;
 
-<<<<<<< Updated upstream
+//Testing to see if this changes anything
 
 void Update()
 {
     goldDisplay.text = gold.ToString();
 }
 
-=======
-{
-    public int gold;
-    public Text goldDisplay;
-
-
-   void Update()
-    {
-        goldDisplay.text = gold.ToString();
-    }
->>>>>>> Stashed changes
 }
 
