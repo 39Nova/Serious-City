@@ -123,6 +123,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &221397468
 --- !u!1 &234860252
 GameObject:
   m_ObjectHideFlags: 0
@@ -131,14 +132,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-<<<<<<< Updated upstream
   - component: {fileID: 221397470}
   - component: {fileID: 221397469}
-=======
   - component: {fileID: 234860255}
   - component: {fileID: 234860254}
   - component: {fileID: 234860253}
->>>>>>> Stashed changes
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -187,11 +185,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-<<<<<<< Updated upstream
   - {fileID: 1475788453}
-=======
   - {fileID: 1510939551}
->>>>>>> Stashed changes
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1517,7 +1512,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
-<<<<<<< Updated upstream
 --- !u!1 &1504802165
 GameObject:
   m_ObjectHideFlags: 0
@@ -1553,10 +1547,8 @@ MeshCollider:
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &1504802167
 MeshRenderer:
-=======
 --- !u!483693784 &1510939550
 TilemapRenderer:
->>>>>>> Stashed changes
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1619,7 +1611,6 @@ Transform:
   m_Father: {fileID: 234860255}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< Updated upstream
 --- !u!1001 &1069596204834000091
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1734,7 +1725,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6938c5a09ed8cab48854c99fc5ff1705, type: 3}
-=======
 --- !u!114 &1796982533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1769,4 +1759,3 @@ MonoBehaviour:
   m_InstancedGameObject: {fileID: 0}
   m_Flags: 3
   m_ColliderType: 1
->>>>>>> Stashed changes
