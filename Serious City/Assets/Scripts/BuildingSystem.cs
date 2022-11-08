@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,24 +6,17 @@ using UnityEngine.Tilemaps;
 
 public class BuildingSystem : MonoBehaviour
 {
-
     public static BuildingSystem current;
-     // This is for grid snapping
 
     public GridLayout gridLayout;
-    //Public as will be accessed from other scripts
     private Grid grid;
-    [SerializedField] private Tilemap MainTilemap;
-    //Is initialised in the editor
-    [SerializedField] private Tilemap whiteTile;
-    // Used to indicate a selected area (turns the tile white)
+    [SerializeField] private Tilemap MainTilemap;
+    [SerializeField] private TileBase whiteTile;
 
     public GameObject prefab1;
     public GameObject prefab2;
-    // Calls on the prefabs that have been made
 
     private PlaceableObject objectToPlace;
-    // For the placeable object
 
     #region Unity methods
 
@@ -30,11 +24,8 @@ public class BuildingSystem : MonoBehaviour
     {
         current = this;
         grid = gridLayout.gameObject.GetComponent<Grid>();
-        // Intialises the current field and gets the grid from the grid layout
     }
 
-<<<<<<< Updated upstream
-=======
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.A))
@@ -45,12 +36,17 @@ public class BuildingSystem : MonoBehaviour
         {
             InitializeWithObject(prefab2);
         }
+
         if (!objectToPlace)
         {
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            objectToPlace.Rotate();
+        }
+        else if (Input.GetKeyDown(KeyCode.Space))
         {
             if (CanBePlaced(objectToPlace))
             {
@@ -69,17 +65,14 @@ public class BuildingSystem : MonoBehaviour
         }
     }
 
->>>>>>> Stashed changes
     #endregion
 
     #region Utils
 
-    public static Vector3 GetMouseWorldPoint()
+    public static Vector3 GetMouseWorldPosition()
     {
-    //Using Raycasting to get the world point
-        Ray ray = Camera.main,ScreenPointToRay(Input.mousePosition);
-        //Created a ray by calling the ScreenPointToRay method
-        if (Physics.Raycastr(ray, out RaycastHit raycastHit))
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit raycastHit))
         {
             return raycastHit.point;
         }
@@ -105,36 +98,32 @@ public class BuildingSystem : MonoBehaviour
         {
             Vector3Int pos = new Vector3Int(v.x, v.y, 0);
             array[counter] = tilemap.GetTile(pos);
-            counter++; 
+            counter++;
         }
 
         return array;
     }
 
     #endregion
-<<<<<<< Updated upstream
-=======
 
     #region Building Placement
 
     public void InitializeWithObject(GameObject prefab)
     {
-    
+        Vector3 position = SnapCoordinateToGrid(Vector3.zero);
 
-    Vector3 position = SnapCoordinateToGrid(Vector3.zero);
-
-    GameObject obj = Instantiate(prefab, position, Quaternion.identity);
-    objectToPlace = obj.GetComponent<PlaceableObject>();
-    obj.AddComponent<ObjectDrag>();
-
+        GameObject obj = Instantiate(prefab, position, Quaternion.identity);
+        objectToPlace = obj.GetComponent<PlaceableObject>();
+        obj.AddComponent<ObjectDrag>();
     }
 
     private bool CanBePlaced(PlaceableObject placeableObject)
     {
         BoundsInt area = new BoundsInt();
         area.position = gridLayout.WorldToCell(objectToPlace.GetStartPosition());
+        area.size = placeableObject.Size;
         area.size = new Vector3Int(area.size.x + 1, area.size.y + 1, area.size.z);
-
+        
         TileBase[] baseArray = GetTilesBlock(area, MainTilemap);
 
         foreach (var b in baseArray)
@@ -145,15 +134,14 @@ public class BuildingSystem : MonoBehaviour
             }
         }
 
-        return true; 
+        return true;
     }
 
     public void TakeArea(Vector3Int start, Vector3Int size)
     {
-        MainTilemap.BoxFill(start, whiteTile, startX: start.x, startY: start.y,
-                            start.x + size.x, start.y + size.y);
+        MainTilemap.BoxFill(start, whiteTile, start.x, start.y, 
+                        start.x + size.x, start.y + size.y);
     }
 
     #endregion
->>>>>>> Stashed changes
 }
