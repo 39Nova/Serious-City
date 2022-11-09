@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1987762367684967935}
   - component: {fileID: 8131436555269991588}
   - component: {fileID: 248529411}
+  - component: {fileID: -6957667407301340586}
   m_Layer: 0
   m_Name: House 2 Prefab
   m_TagString: Untagged
@@ -59,6 +60,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5658d1d29d8be1648bfd5e1d71a2eef9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-6957667407301340586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2709138347313614236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 771c8ce2e2660dc4dbc45469f9ea9d0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PollutionVal: -10
+  MoneyVal: 0
 --- !u!1001 &1951456379660307558
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -50,18 +50,19 @@ public class GameplayManager : MonoBehaviour
     {
         DayNumber = DayNumber + 1;
         UpdateDay.DayNumber = DayNumber;
-        PollutionLvl = PollutionLvl + 10;
         MoneyLvl = MoneyLvl + 10;
         GameObject.FindGameObjectWithTag("PollutionSystem").GetComponent<PollutionSystem>().SetPollution(PollutionLvl);
         DayTimer = DayLength;
     }
 
-    void UpdatePollution()
+    public void UpdatePollution()
     {
+        PollutionLvl = 0;
+
         for (int i = 0; i < Pollutants.Count; i++)
         {
-            PollutionPD = PollutionPD + Pollutants[i].GetComponent<BuildingAttributes>().PollutionVal;
+            PollutionLvl = PollutionLvl + Pollutants[i].GetComponent<BuildingAttributes>().PollutionVal;
         }
-        Debug.Log(PollutionPD);
+        Debug.Log(PollutionLvl);
     }
 }

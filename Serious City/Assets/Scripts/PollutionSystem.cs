@@ -8,11 +8,13 @@ public class PollutionSystem : MonoBehaviour
 
     public Slider slider;
     public static float PollutionLvl;
+    public float PollutionBarLvl;
 
     public void SetPollution(float PollutionLvl)
     {
         Debug.Log(PollutionLvl);
-        slider.value = PollutionLvl;
+        PollutionBarLvl = PollutionBarLvl + PollutionLvl;
+        slider.value = PollutionBarLvl;
     }
 
 }

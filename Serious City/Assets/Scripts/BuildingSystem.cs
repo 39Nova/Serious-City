@@ -17,6 +17,7 @@ public class BuildingSystem : MonoBehaviour
 
     public GameObject prefab1;
     public GameObject prefab2;
+    public GameObject GameManager;
 
     private PlaceableObject objectToPlace;
 
@@ -119,10 +120,12 @@ public class BuildingSystem : MonoBehaviour
         GameObject obj = Instantiate(prefab, position, Quaternion.identity);
         objectToPlace = obj.GetComponent<PlaceableObject>();
         obj.AddComponent<ObjectDrag>();
-        if (IsPollutant == true)
+
+        if (obj.GetComponent<BuildingAttributes>().PollutionVal != 0)
         {
             Pollutants.Add(obj);
             Debug.Log("Fuck Yeah");
+            GameObject.Find("GameManager").GetComponent<GameplayManager>().UpdatePollution();
         }
     }
 
