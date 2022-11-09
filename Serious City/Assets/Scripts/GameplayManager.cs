@@ -59,6 +59,6 @@ public class GameplayManager : MonoBehaviour
         {
             PollutionPD = PollutionPD + Pollutants[i].GetComponent<BuildingAttributes>().PollutionVal;
         }
-        //PollutionPD
+        Debug.Log(PollutionPD);
     }
 }

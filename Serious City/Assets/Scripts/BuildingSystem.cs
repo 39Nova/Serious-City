@@ -12,7 +12,7 @@ public class BuildingSystem : MonoBehaviour
     private Grid grid;
     [SerializeField] private Tilemap MainTilemap;
     [SerializeField] private TileBase whiteTile;
-    public bool IsPollutant = false;
+    public bool IsPollutant;
     public List<GameObject> Pollutants;
 
     public GameObject prefab1;
@@ -32,11 +32,12 @@ public class BuildingSystem : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            InitializeWithObject(prefab1);
             IsPollutant = true;
+            InitializeWithObject(prefab1);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
+            IsPollutant = false;
             InitializeWithObject(prefab2);
         }
 
