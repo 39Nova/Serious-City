@@ -14,10 +14,9 @@ public class BuildingAttributes : MonoBehaviour
     void Start()
     {
 
-        MoneyLvl = GetComponent<MoneySystem>();
-        MoneySystem.MoneyLvl--;
-        other.SetMoney();
-		Money-Update:Serious City/Assets/BuildingAttributes.cs
+       //other = GameObject.Find("MoneySystem").GetComponent<MoneySystem>();
+       //MoneySystem.MoneyLvl--;
+       //other.SetMoney(MoneyVal);
     }
 
     // Update is called once per frame

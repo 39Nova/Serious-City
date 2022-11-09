@@ -8,11 +8,23 @@ public class MoneySystem : MonoBehaviour
 
     public Slider slider;
     public static float MoneyLvl;
+    public float MoneyBarLvl;
+    Text text;
 
+    void Start()
+    {
+        text = GetComponentInChildren<Text>();
+    }
     public void SetMoney(float MoneyLvl)
     {
-        Debug.Log(MoneyLvl);
-        slider.value = MoneyLvl;
+
+        MoneyBarLvl = MoneyBarLvl + MoneyLvl;
+        Debug.Log(text);
+        ////slider.value = MoneyBarLvl;
+    }
+    void Update()
+    {
+        text.text = "Money: " + MoneyBarLvl;
     }
 
 

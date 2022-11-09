@@ -133,10 +133,11 @@ public class BuildingSystem : MonoBehaviour
             Pollutants.Add(obj);
             GameObject.Find("GameManager").GetComponent<GameplayManager>().UpdatePollution();
         }
-        if (IsMoneySpender == true)
+        if (obj.GetComponent<BuildingAttributes>().MoneyVal != 0)
         {
             MoneySpenders.Add(obj);
             Debug.Log("I AM SPENDING UR MONEY");
+            GameObject.Find("GameManager").GetComponent<GameplayManager>().UpdateMoney();
         }
     }
 

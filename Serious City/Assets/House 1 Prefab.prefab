@@ -73,7 +73,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PollutionVal: 5
-  MoneyVal: -10
+  MoneyVal: 10
+  other: {fileID: 0}
 --- !u!1001 &2575596275185085209
 PrefabInstance:
   m_ObjectHideFlags: 0

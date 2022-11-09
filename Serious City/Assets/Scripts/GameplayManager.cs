@@ -15,6 +15,7 @@ public class GameplayManager : MonoBehaviour
     public float MoneyLvl;
     public float MoneyPD;
     List<GameObject> Pollutants;
+    List<GameObject> Moneys;
 
 
 
@@ -22,6 +23,7 @@ public class GameplayManager : MonoBehaviour
     void Start()
     {
         Pollutants = GameObject.Find("Grid").GetComponent<BuildingSystem>().Pollutants;
+        Moneys = GameObject.Find("Grid").GetComponent<BuildingSystem>().MoneySpenders;
         DayTimer = DayLength;
         UpdateDay.DayNumber = DayNumber;
     }
@@ -50,8 +52,8 @@ public class GameplayManager : MonoBehaviour
     {
         DayNumber = DayNumber + 1;
         UpdateDay.DayNumber = DayNumber;
-        MoneyLvl = MoneyLvl + 10;
         GameObject.FindGameObjectWithTag("PollutionSystem").GetComponent<PollutionSystem>().SetPollution(PollutionLvl);
+        GameObject.Find("MoneySystem").GetComponent<MoneySystem>().SetMoney(MoneyLvl);
         DayTimer = DayLength;
     }
 
@@ -62,6 +64,15 @@ public class GameplayManager : MonoBehaviour
         for (int i = 0; i < Pollutants.Count; i++)
         {
             PollutionLvl = PollutionLvl + Pollutants[i].GetComponent<BuildingAttributes>().PollutionVal;
+        }
+    }
+    public void UpdateMoney()
+    {
+        MoneyLvl = 0;
+        
+        for (int i = 0; i < Pollutants.Count; i++)
+        {
+            MoneyLvl = MoneyLvl + Moneys[i].GetComponent<BuildingAttributes>().MoneyVal;
         }
     }
 }
