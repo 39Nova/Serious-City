@@ -6,6 +6,7 @@ TagManager:
   tags:
   - DayCounter
   - PollutionSystem
+  - Pollutant
   layers:
   - Default
   - TransparentFX

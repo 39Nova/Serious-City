@@ -12,6 +12,8 @@ public class BuildingSystem : MonoBehaviour
     private Grid grid;
     [SerializeField] private Tilemap MainTilemap;
     [SerializeField] private TileBase whiteTile;
+    public bool IsPollutant = false;
+    public List<GameObject> Pollutants;
 
     public GameObject prefab1;
     public GameObject prefab2;
@@ -28,11 +30,12 @@ public class BuildingSystem : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             InitializeWithObject(prefab1);
+            IsPollutant = true;
         }
-        else if (Input.GetKeyDown(KeyCode.B))
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             InitializeWithObject(prefab2);
         }
@@ -42,7 +45,7 @@ public class BuildingSystem : MonoBehaviour
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.R))
         {
             objectToPlace.Rotate();
         }
@@ -115,6 +118,11 @@ public class BuildingSystem : MonoBehaviour
         GameObject obj = Instantiate(prefab, position, Quaternion.identity);
         objectToPlace = obj.GetComponent<PlaceableObject>();
         obj.AddComponent<ObjectDrag>();
+        if (IsPollutant == true)
+        {
+            Pollutants.Add(obj);
+            Debug.Log("Fuck Yeah");
+        }
     }
 
     private bool CanBePlaced(PlaceableObject placeableObject)

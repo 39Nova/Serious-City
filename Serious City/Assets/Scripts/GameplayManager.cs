@@ -11,13 +11,15 @@ public class GameplayManager : MonoBehaviour
     public float MaxDayCount;
     private bool TimePasses = true;
     public float PollutionLvl;
-    
+    public float PollutionPD;
+    List<GameObject> Pollutants;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
-
+        Pollutants = GameObject.Find("Grid").GetComponent<BuildingSystem>().Pollutants;
         DayTimer = DayLength;
         UpdateDay.DayNumber = DayNumber;
     }
@@ -49,11 +51,14 @@ public class GameplayManager : MonoBehaviour
         PollutionLvl = PollutionLvl + 10;
         GameObject.FindGameObjectWithTag("PollutionSystem").GetComponent<PollutionSystem>().SetPollution(PollutionLvl);
         DayTimer = DayLength;
-        Debug.Log("DAYOVER");
     }
 
     void UpdatePollution()
     {
-
+        for (int i = 0; i < Pollutants.Count; i++)
+        {
+            PollutionPD = PollutionPD + Pollutants[i].GetComponent<BuildingAttributes>().PollutionVal;
+        }
+        //PollutionPD
     }
 }
