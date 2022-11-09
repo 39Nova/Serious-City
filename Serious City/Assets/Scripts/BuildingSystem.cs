@@ -13,11 +13,7 @@ public class BuildingSystem : MonoBehaviour
     [SerializeField] private Tilemap MainTilemap;
     [SerializeField] private TileBase whiteTile;
     public bool IsPollutant;
-    public bool IsMoneyMaker;
-    public bool IsMoneySpender;
     public List<GameObject> Pollutants;
-    public List<GameObject> MoneyMakers;
-    public List<GameObject> MoneySpenders;
 
     public GameObject prefab1;
     public GameObject prefab2;
@@ -38,14 +34,11 @@ public class BuildingSystem : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             IsPollutant = true;
-            IsMoneySpender = true;
             InitializeWithObject(prefab1);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             IsPollutant = false;
-            IsMoneySpender = false;
-            IsMoneyMaker = true;
             InitializeWithObject(prefab2);
         }
 
@@ -133,11 +126,6 @@ public class BuildingSystem : MonoBehaviour
             Pollutants.Add(obj);
             Debug.Log("Fuck Yeah");
             GameObject.Find("GameManager").GetComponent<GameplayManager>().UpdatePollution();
-        }
-        if (IsMoneySpender == true)
-        {
-            MoneySpenders.Add(obj);
-            Debug.Log("I AM SPENDING UR MONEY");
         }
     }
 
