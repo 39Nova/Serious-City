@@ -12,6 +12,8 @@ public class GameplayManager : MonoBehaviour
     private bool TimePasses = true;
     public float PollutionLvl;
     public float PollutionPD;
+    public float MoneyLvl;
+    public float MoneyPD;
     List<GameObject> Pollutants;
 
 
@@ -49,6 +51,7 @@ public class GameplayManager : MonoBehaviour
         DayNumber = DayNumber + 1;
         UpdateDay.DayNumber = DayNumber;
         PollutionLvl = PollutionLvl + 10;
+        MoneyLvl = MoneyLvl + 10;
         GameObject.FindGameObjectWithTag("PollutionSystem").GetComponent<PollutionSystem>().SetPollution(PollutionLvl);
         DayTimer = DayLength;
     }
