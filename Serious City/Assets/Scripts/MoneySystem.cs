@@ -15,4 +15,5 @@ public class MoneySystem : MonoBehaviour
         slider.value = MoneyLvl;
     }
 
+
 }
