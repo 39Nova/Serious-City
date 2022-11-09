@@ -7,11 +7,17 @@ public class BuildingAttributes : MonoBehaviour
 
     public int PollutionVal;
     public int MoneyVal;
+    public static MoneySystem MoneyLvl;
+    public MoneySystem other;
 
     // Start is called before the first frame update
     void Start()
     {
 
+        MoneyLvl = GetComponent<MoneySystem>();
+        MoneySystem.MoneyLvl--;
+        other.SetMoney();
+		Money-Update:Serious City/Assets/BuildingAttributes.cs
     }
 
     // Update is called once per frame
