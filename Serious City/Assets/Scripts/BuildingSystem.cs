@@ -131,6 +131,7 @@ public class BuildingSystem : MonoBehaviour
         if (obj.GetComponent<BuildingAttributes>().PollutionVal != 0)
         {
             Pollutants.Add(obj);
+            Debug.Log("Fuck Yeah");
             GameObject.Find("GameManager").GetComponent<GameplayManager>().UpdatePollution();
         }
         if (IsMoneySpender == true)

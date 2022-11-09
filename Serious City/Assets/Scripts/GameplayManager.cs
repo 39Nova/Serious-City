@@ -63,5 +63,6 @@ public class GameplayManager : MonoBehaviour
         {
             PollutionLvl = PollutionLvl + Pollutants[i].GetComponent<BuildingAttributes>().PollutionVal;
         }
+        Debug.Log(PollutionLvl);
     }
 }
