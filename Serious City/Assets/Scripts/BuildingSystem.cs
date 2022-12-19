@@ -19,8 +19,10 @@ public class BuildingSystem : MonoBehaviour
     public List<GameObject> MoneyMakers;
     public List<GameObject> MoneySpenders;
 
-    public GameObject prefab1;
-    public GameObject prefab2;
+    public GameObject prefabH;
+    public GameObject prefabF;
+    public GameObject prefabPP;
+    public GameObject prefabW;
     public GameObject GameManager;
 
     private PlaceableObject objectToPlace;
@@ -35,19 +37,8 @@ public class BuildingSystem : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            IsPollutant = true;
-            IsMoneySpender = true;
-            InitializeWithObject(prefab1);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            IsPollutant = false;
-            IsMoneySpender = false;
-            IsMoneyMaker = true;
-            InitializeWithObject(prefab2);
-        }
+
+
 
         if (!objectToPlace)
         {
@@ -75,6 +66,36 @@ public class BuildingSystem : MonoBehaviour
         {
             Destroy(objectToPlace.gameObject);
         }
+    }
+
+    public void Factory()
+    {
+        IsPollutant = true;
+        IsMoneySpender = true;
+        InitializeWithObject(prefabF);
+    }
+
+    public void windmil()
+    {
+        IsPollutant = true;
+        IsMoneySpender = true;
+        InitializeWithObject(prefabW);
+    }
+
+    public void house()
+    {
+        IsPollutant = false;
+        IsMoneySpender = false;
+        IsMoneyMaker = true;
+        InitializeWithObject(prefabH);
+    }
+
+    public void powerplant()
+    {
+        IsPollutant = false;
+        IsMoneySpender = false;
+        IsMoneyMaker = true;
+        InitializeWithObject(prefabPP);
     }
 
     #endregion
