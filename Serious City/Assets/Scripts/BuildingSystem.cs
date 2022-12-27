@@ -32,6 +32,7 @@ public class BuildingSystem : MonoBehaviour
 
 
     private bool isPlacing = false;
+    private GameObject placingObject;
 
     private PlaceableObject objectToPlace;
     [SerializeField]
@@ -85,9 +86,11 @@ public class BuildingSystem : MonoBehaviour
                 alertAnim.Play("PopupAnim");
             }
         }
-        else if(Input.GetKeyDown(KeyCode.Escape))
+        else if(Input.GetKeyDown(KeyCode.Escape) && isPlacing == true)
         {
-
+            /*DestroyImmediate(placingObject, true);
+            objectToPlace = null;
+            isPlacing = false;*/
         }
     }
 
@@ -96,22 +99,40 @@ public class BuildingSystem : MonoBehaviour
     public void Factory()
     {
         if(isPlacing == false)
-        {
-        IsPollutant = true;
-        IsMoneySpender = true;
-        InitializeWithObject(prefabF);
-        isPlacing = true;
-        }
+            if (isPlacing == false)
+            {
+                IsPollutant = true;
+                IsMoneySpender = false;
+                IsMoneyMaker = true;
+                InitializeWithObject(prefabF);
+                placingObject = prefabF;
+
+                Debug.Log("Placement with if statement is working");
+
+                isPlacing = true;
+            }
+            else
+            {
+                Debug.Log("isPlacing is set to true");
+            }
     }
 
     public void windmil()
     {
-        if(isPlacing == false)
+        if (isPlacing == false)
         {
-        isPlacing = true;
-        IsPollutant = true;
-        IsMoneySpender = true;
-        InitializeWithObject(prefabW);
+            IsPollutant = false;
+            IsMoneySpender = true;
+            IsMoneyMaker = false;
+            InitializeWithObject(prefabW);
+
+            Debug.Log("Placement with if statement is working");
+
+            isPlacing = true;
+        }
+        else
+        {
+            Debug.Log("isPlacing is set to true");
         }
     }
 
@@ -136,13 +157,20 @@ public class BuildingSystem : MonoBehaviour
 
     public void powerplant()
     {
-        if(isPlacing == false);
+        if (isPlacing == false)
         {
-        isPlacing = true;
-        IsPollutant = false;
-        IsMoneySpender = false;
-        IsMoneyMaker = true;
-        InitializeWithObject(prefabPP);
+            IsPollutant = false;
+            IsMoneySpender = false;
+            IsMoneyMaker = true;
+            InitializeWithObject(prefabPP);
+
+            Debug.Log("Placement with if statement is working");
+
+            isPlacing = true;
+        }
+        else
+        {
+            Debug.Log("isPlacing is set to true");
         }
     }
 

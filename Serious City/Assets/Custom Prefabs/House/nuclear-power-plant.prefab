@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 771c8ce2e2660dc4dbc45469f9ea9d0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PollutionVal: 30
+  PollutionVal: 5
   MoneyVal: 20
   other: {fileID: 0}
 --- !u!198 &8168360497454646090

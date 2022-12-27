@@ -53,7 +53,9 @@ public class GameplayManager : MonoBehaviour
         DayNumber = DayNumber + 1;
         UpdateDay.DayNumber = DayNumber;
         GameObject.FindGameObjectWithTag("PollutionSystem").GetComponent<PollutionSystem>().SetPollution(PollutionLvl);
+
         GameObject.Find("MoneySystem").GetComponent<MoneySystem>().SetMoney(MoneyLvl);
+
         DayTimer = DayLength;
     }
 

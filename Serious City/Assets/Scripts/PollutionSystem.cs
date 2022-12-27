@@ -20,6 +20,7 @@ public class PollutionSystem : MonoBehaviour
     {
         PollutionBarLvl = PollutionBarLvl + PollutionLvl;
         slider.value = PollutionBarLvl;
+
         if (PollutionBarLvl >=0 && PollutionBarLvl < 25)
         {
             Debug.Log("Healthy");
