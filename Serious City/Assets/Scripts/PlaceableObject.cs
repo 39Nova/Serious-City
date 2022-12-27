@@ -68,4 +68,5 @@ public class PlaceableObject : MonoBehaviour
         
         //invoke events of placement
     }
+
 }

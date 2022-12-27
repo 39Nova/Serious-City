@@ -70,8 +70,9 @@ public class BuildingSystem : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (CanBePlaced(objectToPlace))
+            if (CanBePlaced(objectToPlace) && isPlacing == true)
             {
+                
                 objectToPlace.Place();
                 Vector3Int start = gridLayout.WorldToCell(objectToPlace.GetStartPosition());
                 TakeArea(start, objectToPlace.Size);
@@ -79,7 +80,7 @@ public class BuildingSystem : MonoBehaviour
                 moneySystemRef.MoneyBarLvl -= 300;
                 isPlacing = false;
             }
-            else
+            else if (isPlacing == true)
             {
                 AlertSystem.SetActive(true);
                 Message.text = "WARNING! Cannot be placed here!"; 
@@ -88,9 +89,16 @@ public class BuildingSystem : MonoBehaviour
         }
         else if(Input.GetKeyDown(KeyCode.Escape) && isPlacing == true)
         {
-            /*DestroyImmediate(placingObject, true);
-            objectToPlace = null;
-            isPlacing = false;*/
+            isPlacing = false;
+            Debug.Log("isPlacing shld = false now");
+            objectToPlace.Place();
+            objectToPlace.gameObject.tag = "ToBeRemoved";
+            objectToPlace.gameObject.SetActive(false);
+
+            Debug.Log("everything ran");
+
+
+            
         }
     }
 
@@ -99,22 +107,20 @@ public class BuildingSystem : MonoBehaviour
     public void Factory()
     {
         if(isPlacing == false)
-            if (isPlacing == false)
-            {
-                IsPollutant = true;
-                IsMoneySpender = false;
-                IsMoneyMaker = true;
-                InitializeWithObject(prefabF);
-                placingObject = prefabF;
+        {
+            IsPollutant = true;
+            IsMoneySpender = false;
+            IsMoneyMaker = true;
+            InitializeWithObject(prefabF);
 
-                Debug.Log("Placement with if statement is working");
+            Debug.Log("Placement with if statement is working");
 
-                isPlacing = true;
-            }
-            else
-            {
-                Debug.Log("isPlacing is set to true");
-            }
+            isPlacing = true;
+        }
+        else
+        {
+            Debug.Log("isPlacing = true");
+        }
     }
 
     public void windmil()
@@ -140,14 +146,14 @@ public class BuildingSystem : MonoBehaviour
     {
         if(isPlacing == false)
         {
-        IsPollutant = false;
-        IsMoneySpender = false;
-        IsMoneyMaker = true;
-        InitializeWithObject(prefabH);
+            IsPollutant = false;
+            IsMoneySpender = false;
+            IsMoneyMaker = true;
+            InitializeWithObject(prefabH);
         
-        Debug.Log("Placement with if statement is working");
+            Debug.Log("Placement with if statement is working");
         
-        isPlacing = true;
+            isPlacing = true;
         }
         else{
             Debug.Log("isPlacing is set to true");
@@ -173,6 +179,15 @@ public class BuildingSystem : MonoBehaviour
             Debug.Log("isPlacing is set to true");
         }
     }
+
+    /*public void removeOld()
+    {
+        var gos = GameObject.FindGameObjectsWithTag(ToBeRemoved);
+        foreach (var go in gos)
+        Destroy(go);
+        //I cannot work out how to destroy all objects with tag so im leaving this like this for now :P
+        This code is making me go feral
+    }*/
 
     #endregion
 
