@@ -14,6 +14,7 @@ public class MoneySystem : MonoBehaviour
     void Start()
     {
         text = GetComponentInChildren<Text>();
+        MoneyBarLvl = 1200;
     }
     public void SetMoney(float MoneyLvl)
     {

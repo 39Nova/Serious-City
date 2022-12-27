@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UI;
 
 public class BuildingSystem : MonoBehaviour
 {
@@ -24,10 +25,27 @@ public class BuildingSystem : MonoBehaviour
     public GameObject prefabPP;
     public GameObject prefabW;
     public GameObject GameManager;
+    public GameObject AlertSystem;
+    public Animation alertAnim;
+
+    public Text Message;
+
+
+    private bool isPlacing = false;
 
     private PlaceableObject objectToPlace;
+    [SerializeField]
+    public MoneySystem moneySystemRef;
+
+    private AudioSource clunkAudio;
 
     #region Unity methods
+
+    void Start()
+    {
+        clunkAudio = GameObject.Find ("AudioManager").GetComponent<AudioSource> ();
+    }
+ 
 
     private void Awake()
     {
@@ -56,46 +74,76 @@ public class BuildingSystem : MonoBehaviour
                 objectToPlace.Place();
                 Vector3Int start = gridLayout.WorldToCell(objectToPlace.GetStartPosition());
                 TakeArea(start, objectToPlace.Size);
+                clunkAudio.Play();
+                moneySystemRef.MoneyBarLvl -= 300;
+                isPlacing = false;
             }
             else
             {
-                Destroy(objectToPlace.gameObject);
+                AlertSystem.SetActive(true);
+                Message.text = "WARNING! Cannot be placed here!"; 
+                alertAnim.Play("PopupAnim");
             }
         }
         else if(Input.GetKeyDown(KeyCode.Escape))
         {
-            Destroy(objectToPlace.gameObject);
+
         }
     }
 
+    
+
     public void Factory()
     {
+        if(isPlacing == false)
+        {
         IsPollutant = true;
         IsMoneySpender = true;
         InitializeWithObject(prefabF);
+        isPlacing = true;
+        }
     }
 
     public void windmil()
     {
+        if(isPlacing == false)
+        {
+        isPlacing = true;
         IsPollutant = true;
         IsMoneySpender = true;
         InitializeWithObject(prefabW);
+        }
     }
 
     public void house()
     {
+        if(isPlacing == false)
+        {
         IsPollutant = false;
         IsMoneySpender = false;
         IsMoneyMaker = true;
         InitializeWithObject(prefabH);
+        
+        Debug.Log("Placement with if statement is working");
+        
+        isPlacing = true;
+        }
+        else{
+            Debug.Log("isPlacing is set to true");
+        }
+        
     }
 
     public void powerplant()
     {
+        if(isPlacing == false);
+        {
+        isPlacing = true;
         IsPollutant = false;
         IsMoneySpender = false;
         IsMoneyMaker = true;
         InitializeWithObject(prefabPP);
+        }
     }
 
     #endregion
