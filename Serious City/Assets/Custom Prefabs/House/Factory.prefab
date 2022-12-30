@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PollutionVal: 10
-  MoneyVal: 20
+  MoneyVal: 200
   other: {fileID: 0}
 --- !u!65 &6855128821145858170
 BoxCollider:

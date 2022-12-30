@@ -31,6 +31,7 @@ public class GameplayManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if(DayTimer > 0 && TimePasses == true)
         {
             DayTimer -= Time.deltaTime;
@@ -48,18 +49,18 @@ public class GameplayManager : MonoBehaviour
             }
         }
     }
+
     void DayTurnover()
     {
         DayNumber = DayNumber + 1;
         UpdateDay.DayNumber = DayNumber;
-        GameObject.FindGameObjectWithTag("PollutionSystem").GetComponent<PollutionSystem>().SetPollution(PollutionLvl);
+        GameObject.Find("PollutionSystem").GetComponent<PollutionSystem>().SetPollution(PollutionLvl);
 
         GameObject.Find("MoneySystem").GetComponent<MoneySystem>().SetMoney(MoneyLvl);
 
         DayTimer = DayLength;
     }
-
-    public void UpdatePollution()
+        public void UpdatePollution()
     {
         PollutionLvl = 0;
 
